@@ -12,3 +12,24 @@
   margin: auto;
   width: 50%;
 }
+
+#home {
+  display: flex;
+  flex-direction: column;
+}
+
+#welcome-text {
+  font-size: xx-large;
+  margin: 10vh auto;
+}
+
+#welcome-img {
+  margin: auto;
+  height: 300px;
+  width: 600px;
+  border: 1px solid black;
+  background-color: rgb(75, 75, 75);
+  text-align: center;
+  vertical-align: middle;
+  line-height: 300px;
+}
