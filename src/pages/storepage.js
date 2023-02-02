@@ -13,6 +13,7 @@ class Product {
 
 function StorePage () {
   const [productList, setProductList] = useState([])
+  const [cartList, setCartList] = useState([])
   useEffect(() => {
     const products = []
     for (let i = 1; i < 9; i++) {
@@ -21,11 +22,17 @@ function StorePage () {
     setProductList(products)
   }, [])
 
+  const handleAddCart = (product, amount) => {
+    const item = { name: product, total: amount }
+    const list = [...cartList, item]
+    setCartList(list)
+  }
+
   return (
     <div id='storepage'>
       <Navbar />
-      <Store productList={productList}/>
-      <Cart />
+      <Store productList={productList} handleAddCart={handleAddCart}/>
+      <Cart cartList={cartList}/>
     </div>
   )
 }

@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-function noop () {
-  console.log('test')
-}
-
-function Store ({ productList }) {
+function Store ({ productList, handleAddCart }) {
   const products = productList.map(product => {
     const [hidden, setHidden] = useState(true)
     const [value, setValue] = useState(1)
@@ -43,9 +39,15 @@ function Store ({ productList }) {
             max={99}
           />
           <button onClick={add} className='prod-badd'>+</button>
-          <button onClick={noop} className='prod-bsub'>Add to Cart</button>
+          <button onClick={() => {
+            handleAddCart(product.name, value)
+          }} className='prod-bsub'>Add to Cart</button>
         </div>
-        <button onClick={() => setHidden(true)} className={
+        <button onClick={() => {
+          setValue(1)
+          setHidden(true)
+        }}
+          className={
           hidden ? 'prod-bclose hide' : 'prod-bclose'
         }>X</button>
       </div>
@@ -57,7 +59,8 @@ function Store ({ productList }) {
 }
 
 Store.propTypes = {
-  productList: PropTypes.array
+  productList: PropTypes.array,
+  handleAddCart: PropTypes.func
 }
 
 export default Store
