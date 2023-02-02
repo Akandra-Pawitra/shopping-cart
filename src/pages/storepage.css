@@ -85,6 +85,7 @@
 .prod-input {
   text-align: center;
   width: 40px;
+  appearance: textfield;
 }
 
 .prod-bsub {

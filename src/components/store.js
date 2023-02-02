@@ -8,6 +8,20 @@ function noop () {
 function Store ({ productList }) {
   const products = productList.map(product => {
     const [hidden, setHidden] = useState(true)
+    const [value, setValue] = useState(1)
+    const handleChange = (event) => {
+      if (event.target.value < 1 || event.target.value === '') setValue(1)
+      else if (event.target.value > 99) {
+        if (event.target.value[1] === '0' && event.target.value[2] === '0') setValue(1)
+        else setValue(event.target.value[1] + event.target.value[2])
+      } else (setValue(event.target.value))
+    }
+    const red = () => {
+      if (value > 1) setValue(+(value) - 1)
+    }
+    const add = () => {
+      if (value < 99) setValue(+(value) + 1)
+    }
     return (
       <div className='prod-grid' key={(product.name).split(' ').join('')}>
         <img className='prod-img' src="" alt={product.name + ' image'} onClick={() => setHidden(false)} />
@@ -19,9 +33,16 @@ function Store ({ productList }) {
         <div className={
           hidden ? 'prod-total hide' : 'prod-total'
         }>
-          <button onClick={noop} className='prod-bred'>-</button>
-          <input onChange={noop} className='prod-input' type='text' min={0} max={99} value='1'></input>
-          <button onClick={noop} className='prod-badd'>+</button>
+          <button onClick={red} className='prod-bred'>-</button>
+          <input
+            onChange={handleChange}
+            value={value}
+            className='prod-input'
+            type='number'
+            min={0}
+            max={99}
+          />
+          <button onClick={add} className='prod-badd'>+</button>
           <button onClick={noop} className='prod-bsub'>Add to Cart</button>
         </div>
         <button onClick={() => setHidden(true)} className={
