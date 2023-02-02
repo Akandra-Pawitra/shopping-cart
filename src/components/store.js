@@ -40,7 +40,7 @@ function Store ({ productList, handleAddCart }) {
           />
           <button onClick={add} className='prod-badd'>+</button>
           <button onClick={() => {
-            handleAddCart(product.name, value)
+            handleAddCart(product.name, value, product.price)
           }} className='prod-bsub'>Add to Cart</button>
         </div>
         <button onClick={() => {

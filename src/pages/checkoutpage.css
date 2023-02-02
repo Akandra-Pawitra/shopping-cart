@@ -1,0 +1,42 @@
+#check-invoice {
+  margin: 5vh 15vw 0;
+}
+
+.check-cart-item {
+  background-color: rgb(75, 75, 75);
+  padding: 10px;
+  margin: 0;
+  display: grid;
+  column-gap: 10px;
+  grid-template-columns: 50px 1fr 100px;
+  outline: 1px solid rgb(50, 50, 50);
+}
+
+.check-cart-item img {
+  line-height: 50px;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  outline: 1px solid rgb(50, 50, 50);
+}
+
+.check-cart-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.check-cart-item-total {
+  line-height: 50px;
+  text-align: center;
+}
+
+#check-total {
+  padding: 10px 0;
+  background-color: rgb(75, 75, 75);
+  outline: 1px solid rgb(50, 50, 50);
+}
+
+#check-total p {
+  width: 100px;
+  margin: 0 0 0 auto;
+}

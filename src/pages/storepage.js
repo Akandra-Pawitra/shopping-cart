@@ -1,33 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import Navbar from '../components/navbar'
 import Store from '../components/store'
 import Cart from '../components/cart'
 import './storepage.css'
 
-class Product {
-  constructor (name, price) {
-    this.name = name
-    this.price = price
-  }
-}
-
-function StorePage () {
-  const [productList, setProductList] = useState([])
-  const [cartList, setCartList] = useState([])
-  useEffect(() => {
-    const products = []
-    for (let i = 1; i < 9; i++) {
-      products.push(new Product(`Product ${i}`, i * 10))
-    }
-    setProductList(products)
-  }, [])
-
-  const handleAddCart = (product, amount) => {
-    const item = { name: product, total: amount }
-    const list = [...cartList, item]
-    setCartList(list)
-  }
-
+function StorePage ({ productList, handleAddCart, cartList }) {
   return (
     <div id='storepage'>
       <Navbar />
@@ -35,6 +13,12 @@ function StorePage () {
       <Cart cartList={cartList}/>
     </div>
   )
+}
+
+StorePage.propTypes = {
+  productList: PropTypes.array,
+  handleAddCart: PropTypes.func,
+  cartList: PropTypes.array
 }
 
 export default StorePage
